@@ -3,7 +3,7 @@ import pandas as pd
 
 app = Flask(__name__, template_folder='.')
 
-#Define the DataFrame globally
+# Define the DataFrame globally
 df = None
 
 # Read the Excel workbook into a pandas DataFrame
