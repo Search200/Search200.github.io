@@ -44,13 +44,13 @@
             border: 1px solid #ccc;
             border-radius: 10px;
             margin-right: 10px;
-            width: 220px;
+            width: 200px;
         }
 
         #search_button {
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #3F48CC;
+            background-color: #4650E3;
             border: 1px solid #87CEFA;
             border-radius: 10px;
             cursor: pointer;
@@ -87,17 +87,17 @@
 <body>
 
     <header>
-        <img src="./public/coh logo 1000 transparent h1_0-1500h.png" alt="Logo">
+        <img src="public/coh logo 1000 transparent h1_0-1500h.png" alt="Logo">
     </header>
 
     <main>
-        <img src="./public/ug.png" alt="UG">
+        <img src="public/ug.png" alt="UG">
         <h4>COLLEGE OF HUMANITIES</h4>
         <h1>Level 200 ID card Database</h1>
-        <p>Enter your ID number in the Search Bar below and Hit Search to find out whether your Students' ID Card is ready for pickup.</p>
-        <form id="searchForm" action="/search" method="POST" onsubmit="return submitForm()">
-            <input type="number" id="search_query" name="search_query" placeholder="Enter your ID number Here" required>
-            <button type="submit" id="search_button">Search</button>
+        <p>Enter your ID number in the Search Bar below and Hit Search to find out whether your Students' ID Card is ready for pick up.</p>
+        <form id="searchForm" action="/search" method="POST">
+            <input type="text" id="search_query" name="search_query" placeholder="Enter your ID number Here" required>
+            <button type="button" id="search_button" onclick="search()">Search</button>
         </form>
 
         <div id="result"></div>
@@ -111,13 +111,14 @@
             var xhr = new XMLHttpRequest();
             xhr.open('POST', '/search', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onload = function () {
-                if (xhr.status === 200) {
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
                     document.getElementById('result').innerHTML = xhr.responseText;
                 }
             };
             xhr.send('search_query=' + encodeURIComponent(query));
         }
     </script>
+
 </body>
 </html>

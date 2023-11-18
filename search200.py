@@ -1,20 +1,14 @@
 from flask import Flask, render_template, request
 import pandas as pd
 
-app = Flask(__name__, template_folder='.')
-
-# Define the DataFrame globally
-df = None
+app = Flask(__name__, template_folder=',')
 
 # Read the Excel workbook into a pandas DataFrame
-excel_file_path = './documents/Current200s.xlsx'
-try:
-    df = pd.read_excel(excel_file_path)
-except Exception as e:
-    print(f"Error reading Excel file: {e}")
+excel_file_path = 'documents/Current200s.xlsx'
+df = pd.read_excel(excel_file_path)
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
     return render_template('index.html')
 
