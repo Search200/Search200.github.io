@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import pandas as pd
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 
 # Read the Excel workbook into a pandas DataFrame
 excel_file_path = 'documents/Current200s.xlsx'
