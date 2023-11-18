@@ -3,9 +3,15 @@ import pandas as pd
 
 app = Flask(__name__, template_folder='.')
 
+#Define the DataFrame globally
+df = None
+
 # Read the Excel workbook into a pandas DataFrame
 excel_file_path = './documents/Current200s.xlsx'
-df = pd.read_excel(excel_file_path)
+try:
+    df = pd.read_excel(excel_file_path)
+except Exception as e:
+    print(f"Error reading Excel file: {e}")
 
 
 @app.route('/', methods=['GET', 'POST'])
