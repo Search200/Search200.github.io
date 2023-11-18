@@ -97,7 +97,7 @@
         <p>Enter your ID number in the Search Bar below and Hit Search to find out whether your Students' ID Card is ready for pick up.</p>
         <form id="searchForm" action="/search" method="POST">
             <input type="number" id="search_query" name="search_query" placeholder="Enter your ID number Here" required>
-            <button type="button" id="search_button" onclick="search()">Search</button>
+            <button type="submit" id="search_button" onclick="search()">Search</button>
         </form>
 
         <div id="result"></div>
@@ -105,19 +105,19 @@
 
     <script>
         function search() {
-            var query = document.getElementById('search_query').value;
+        var query = document.getElementById('search_query').value;
 
-            // Send an asynchronous request to the backend
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/search', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.getElementById('result').innerHTML = xhr.responseText;
-                }
-            };
-            xhr.send('search_query=' + encodeURIComponent(query));
-        }
+        // Send an asynchronous request to the backend
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/search', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                document.getElementById('result').innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send('search_query=' + encodeURIComponent(query));
+    }
     </script>
 
 </body>
