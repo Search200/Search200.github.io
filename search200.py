@@ -4,7 +4,7 @@ import pandas as pd
 app = Flask(__name__, template_folder='.')
 
 # Read the Excel workbook into a pandas DataFrame
-excel_file_path = 'documents/Current200s.xlsx'
+excel_file_path = './documents/Current200s.xlsx'
 df = pd.read_excel(excel_file_path)
 
 
