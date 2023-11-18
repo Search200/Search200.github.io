@@ -13,7 +13,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/search', methods=['POST'])
 def search():
     query = request.form.get('search_query')
 
