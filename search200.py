@@ -8,7 +8,7 @@ excel_file_path = './documents/Current200s.xlsx'
 df = pd.read_excel(excel_file_path)
 
 
-@app.route('/', METHODS=['POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
 
