@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 200 ID card Database</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        header img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #searchForm {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #search_query {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-right: 10px;
+            width: 200px;
+        }
+
+        #search_button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #87CEFA;
+            border: 1px solid #87CEFA;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        #result {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Inter', sans-serif;
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        h4 {
+            font-family: 'Inter';
+            text-align: center;
+            font-size: 0.85rem;
+            padding: 10px 20px;
+        }
+
+        p {
+            font-family: sans-serif;
+            text-align: center;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img href="public/coh logo 1000 transparent h1_0-1500h.png" alt="Logo">
+    </header>
+
+    <main>
+        <img href="public/ug.png" alt="UG">
+        <h4>COLLEGE OF HUMANITIES</h4>
+        <h1>Level 200 ID card Database</h1>
+        <p>Enter your ID number in the Search Bar below and Hit Search to find out whether your Students' ID Card is ready for pick up.</p>
+        <form id="searchForm" action="/search" method="POST">
+            <input type="text" id="search_query" name="search_query" placeholder="Enter your ID number Here" required>
+            <button type="button" id="search_button" onclick="search()">Search</button>
+        </form>
+
+        <div id="result"></div>
+    </main>
+
+    <script>
+        function search() {
+            var query = document.getElementById('search_query').value;
+
+            // Send an asynchronous request to the backend
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/search', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById('result').innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send('search_query=' + encodeURIComponent(query));
+        }
+    </script>
+
+</body>
+</html>
