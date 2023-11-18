@@ -8,16 +8,12 @@ excel_file_path = './documents/Current200s.xlsx'
 df = pd.read_excel(excel_file_path)
 
 
-@app.route('/', METHODS=['GET', 'POST'])
+@app.route('/', METHODS=['POST'])
 def index():
-    if request.method == 'POST':
-        query = request.form.get('search_query')
-        #Hnale the search logic here
-        return f"Search query submitted: {query}"
     return render_template('index.html')
 
 
-@app.route('/search', methods=['POST'])
+@app.route('/search', methods=['GET', 'POST'])
 def search():
     query = request.form.get('search_query')
 
