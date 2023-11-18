@@ -95,7 +95,7 @@
         <h4>COLLEGE OF HUMANITIES</h4>
         <h1>Level 200 ID card Database</h1>
         <p>Enter your ID number in the Search Bar below and Hit Search to find out whether your Students' ID Card is ready for pickup.</p>
-        <form id="searchForm" action="/search" method="POST" onsubmit="return submitForm()">
+        <form id="searchForm" action="/search" method="POST">
             <input type="number" id="search_query" name="search_query" placeholder="Enter your ID number Here" required>
             <button type="submit" id="search_button" onclick="search()">Search</button>
         </form>
@@ -105,7 +105,7 @@
     <div id="result"></div>
 
     <script>
-        function submitForm() {
+        function search() {
             var query = document.getElementById('search_query').value;
 
             // Send an asynchronous request to the backend
