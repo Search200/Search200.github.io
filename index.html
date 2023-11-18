@@ -97,7 +97,7 @@
         <p>Enter your ID number in the Search Bar below and Hit Search to find out whether your Students' ID Card is ready for pickup.</p>
         <form id="searchForm" action="/search" method="POST" onsubmit="return submitForm()">
             <input type="number" id="search_query" name="search_query" placeholder="Enter your ID number Here" required>
-            <button type="submit" id="search_button">Search</button>
+            <button type="submit" id="search_button" onclick="search()">Search</button>
         </form>
 
     </main>
